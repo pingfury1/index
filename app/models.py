@@ -42,7 +42,7 @@ class Item(db.Model):
             'id'            : self.id,
             'name'          : self.name,
             'url'           : self.url,
-            'ntoice'        : self.notice,
+            'notice'        : self.notice,
             'logo_url'      : self.logo_url,
             'manual_name'   : self.manual_name,
             'manual_url'    : self.manual_url,

@@ -1,5 +1,6 @@
 from flask_restful import Api
-from .views import Items, Groups
+from .item import Items
+from .group import Groups
 
 from . import api as app_api
 
