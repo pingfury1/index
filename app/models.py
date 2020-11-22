@@ -9,6 +9,17 @@ class Group(db.Model):
 
     def __repr__(self):
         return '<Group %r>' % self.name
+    
+    def to_json(self):
+        group_json = {
+            'id'    : self.id,
+            'name'  : self.name,
+            'items' : [
+                i.to_json() for i in Item.query.filter_by(group_id=self.id).all()
+                ]
+        }
+        
+        return group_json
 
 
 class Item(db.Model):
@@ -25,3 +36,17 @@ class Item(db.Model):
 
     def __repr__(self):
         return '<Item %r>' % self.name
+    
+    def to_json(self):
+        item_json = {
+            'id'            : self.id,
+            'name'          : self.name,
+            'url'           : self.url,
+            'ntoice'        : self.notice,
+            'logo_url'      : self.logo_url,
+            'manual_name'   : self.manual_name,
+            'manual_url'    : self.manual_url,
+            'group_id'      : self.group_id
+        }
+
+        return item_json
