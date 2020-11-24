@@ -26,9 +26,7 @@ class Items(Resource):
     
     def post(self):
         args = parse.parse_args()
-        print(args['name'])
-        r = Item.query.filter_by(name=args['name']).first()
-        if not r:
+        if not Item.query.filter_by(name=args['name']).first():
             item = Item(**args)
             db.session.add(item)
             db.session.commit()
